@@ -1,0 +1,45 @@
+@charset "UTF-8";
+
+div#container {
+	/* border:1px solid black; */
+	width:95%; 
+	margin:auto; 
+	padding:20px; 
+	text-align:center; 
+}
+section{
+	float:left;
+}
+section#tbl-container{
+	/* border:1px solid black; */
+	width:70%; 
+	text-align:center; 
+	padding: 0 30px 30px
+}
+section#tbl-container table{
+	/* border:1px solid tomato; */
+	border-collapse:collapse;
+	width: 100%;
+}
+section#tbl-container table th, section#tbl-container table td {
+	border:1px solid tomato;
+	padding:5px;
+}
+section#srch-container{
+	/* border:1px solid black; */
+	width:25%; 
+	height: 300px;
+	text-align:left; 
+	padding:30px 30px 100px 30px; 
+}
+button#btn-add{
+	float: right;
+	margin:10px 0;
+}
+/*마우스 오버시 컬러변경 효과*/
+section#tbl-container table tr:hover td{
+	background : tomato;
+	color: white;
+	cursor: pointer;
+	font-weight: bold;
+}
