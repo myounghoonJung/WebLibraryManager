@@ -8,17 +8,17 @@ create table tbl_book(
     booktitle varchar2(60) not null,
     author varchar2(60) not null,
     genre varchar2(30) not null,
-    status char(1) default 'N' check (status in ('B','N')),
-    delflag char(1) default 'N' check (delflag in ('Y','N')),
+    status char(1) default 'N' check (status in ('B','N')) not null,
+    delflag char(1) default 'N' check (delflag in ('Y','N')) not null,
     deldate date
 );
 
 create table tbl_book_del(
-    deldate date default sysdate not null,
     bookid number constraint pk_book_del_id primary key,
     booktitle varchar2(60) not null,
     author varchar2(60) not null,
-    genre varchar2(30) not null
+    genre varchar2(30) not null,
+    deldate date default sysdate not null
 );
 
 create table tbl_member(
@@ -31,13 +31,12 @@ create table tbl_member(
     favoritegenre varchar2(60) not null,
     presentborrowcount number default 0,
     historyborrowcount number default 0,
-    enrolldate date default sysdate,
-    quitflag char(1) default 'N' check (quitflag in ('Y','N')),
+    enrolldate date default sysdate not null,
+    quitflag char(1) default 'N' check (quitflag in ('Y','N')) not null,
     quitdate date
 );
 
 create table tbl_member_quit(
-    quitdate date default sysdate,
     memberid varchar2(30) constraint pk_member_quit_memberid primary key,
     memberpw varchar2(30) not null,
     membername varchar2(20) not null,
@@ -46,12 +45,13 @@ create table tbl_member_quit(
     phone varchar2(13) not null,
     favoritegenre varchar2(60) not null,
     historyborrowcount number not null,
-    enrolldate date not null
+    enrolldate date not null,
+    quitdate date default sysdate not null
 );
 
 create table tbl_borrow_logger(
     logno number constraint pk_borrow_logno primary key,
-    logdate date default sysdate,
+    logdate date default sysdate not null,
     bookid number constraint fk_borrow_bookid references tbl_book(bookid),
     booktitle varchar2(60) not null,
     author varchar2(60) not null,
@@ -59,7 +59,7 @@ create table tbl_borrow_logger(
     borrowdate date,
     untilborrowdate date,
     returndate date,
-    status char(1) default 'N' check (status in ('B','R')),
+    status char(1) default 'N' check (status in ('B','R')) not null,
     borrowmemberid constraint fk_borrow_memberid references tbl_member(memberid)
 );
 
@@ -67,7 +67,7 @@ create table tbl_member_logger(
     logno number constraint pk_logger_no primary key,
     logdate date default sysdate not null,
     memberid varchar2(30) constraint fk_logger_memberid references tbl_member(memberid),
-    status char(1) not null,
+    status char(1) not null check (status in ('I','O')),
     ip varchar2(100) not null
 );
 
