@@ -25,9 +25,9 @@ create table tbl_member(
     memberpw varchar2(30) not null,
     membername varchar2(20) not null,
     gender char(1) check (gender in ('M','F')) not null,
-    birthday date not null,
+    birthday date,
     phone varchar2(13) not null,
-    favoritegenre varchar2(60) not null,
+    favoritegenre varchar2(60),
     presentborrowcount number default 0,
     historyborrowcount number default 0,
     enrolldate date default sysdate not null
@@ -61,7 +61,7 @@ create table tbl_borrow_logger(
 create table tbl_member_logger(
     logno number constraint pk_logger_no primary key,
     logdate date default sysdate not null,
-    memberid varchar2(30) constraint fk_logger_memberid references tbl_member(memberid),
+    memberid varchar2(30),
     status char(1) not null check (status in ('I','O')),
     ip varchar2(100) not null
 );
