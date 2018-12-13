@@ -56,19 +56,22 @@ $(function(){
 			<nav>
 				<ul>
 					<li>공지사항</li>
-					<% // 로그인한 사용자가 멤버일 때 보여줄 메뉴
-					if(!loggedinMember.getMemberId().equals("admin")){
+					<%
+					// 로그인한 사용자가 관리자일 때 보여줄 메뉴
+					if (loggedinMember!=null && loggedinMember.getMemberId().equals("admin")) {
+					%>
+					<li>회원 관리</li>
+					<li>도서 관리</li>
+					<% 
+					}
+					// 로그인한 사용자가 멤버이거나 로그인되지 않았을 때 보여줄 메뉴
+					else {
 					%>
 					<li>도서 검색</li>
 					<li>마이 라이브러리</li>
 					<%
 					}
-					// 로그인한 사용자가 관리자일 때 보여줄 메뉴
-					else {
 					%>
-					<li>회원 관리</li>
-					<li>도서 관리</li>
-					<% } %>
 				</ul>
 			</nav>
 			<!-- 메인메뉴 끝 -->
