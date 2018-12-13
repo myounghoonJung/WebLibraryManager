@@ -5,7 +5,7 @@ import java.sql.Date;
 public class MemberLogger {
 	private int logNo;
 	private Date logDate;
-	private Member m = new Member();
+	private String memberId;
 	private String status;
 	private String ip;
 	
@@ -14,7 +14,7 @@ public class MemberLogger {
 	public MemberLogger(int logNo, Date logDate, String memberId, String status, String ip) {
 		this.logNo = logNo;
 		this.logDate = logDate;
-		m.setMemberId(memberId);
+		this.memberId = memberId;
 		this.status = status;
 		this.ip = ip;
 	}
@@ -35,6 +35,14 @@ public class MemberLogger {
 		this.logDate = logDate;
 	}
 
+	public String getMemberId() {
+		return memberId;
+	}
+
+	public void setMemberId(String memberId) {
+		this.memberId = memberId;
+	}
+
 	public String getStatus() {
 		return status;
 	}
@@ -53,7 +61,7 @@ public class MemberLogger {
 
 	@Override
 	public String toString() {
-		return logNo + "\t" + logDate + "\t" + m.getMemberId() + "\t" + status + "\t" + ip;
+		return logNo + "\t" + logDate + "\t" + memberId + "\t" + status + "\t" + ip;
 	}
 	
 	

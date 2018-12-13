@@ -13,8 +13,6 @@ public class Member {
 	private int presentBorrowCount; // 현재 대여권수
 	private int historyBorrowCount; // 총 대여권수
 	private Date enrollDate; // 가입날짜
-	private String quitflag; // 탈퇴유무(Y,N)
-	private Date quitDate; // 탈퇴날짜
 	
 	public Member() {}
 
@@ -32,8 +30,7 @@ public class Member {
 	
 	// 회원조회용 생성자
 	public Member(String memberId, String memberPw, String memberName, String gender, Date birthDay, String phone,
-			String favoriteGenre, int presentBorrowCount, int historyBorrowCount, Date enrollDate, String quitflag,
-			Date quitDate) {
+			String favoriteGenre, int presentBorrowCount, int historyBorrowCount, Date enrollDate) {
 		this.memberId = memberId;
 		this.memberPw = memberPw;
 		this.memberName = memberName;
@@ -44,13 +41,11 @@ public class Member {
 		this.presentBorrowCount = presentBorrowCount;
 		this.historyBorrowCount = historyBorrowCount;
 		this.enrollDate = enrollDate;
-		this.quitflag = quitflag;
-		this.quitDate = quitDate;
 	}
 	
 	// 회원탈퇴용 생성자
 	public Member(String memberId, String memberPw, String memberName, String gender, Date birthDay, String phone,
-			String favoriteGenre, int historyBorrowCount, Date enrollDate, Date quitDate) {
+			String favoriteGenre, int historyBorrowCount, Date enrollDate) {
 		this.memberId = memberId;
 		this.memberPw = memberPw;
 		this.memberName = memberName;
@@ -60,7 +55,6 @@ public class Member {
 		this.favoriteGenre = favoriteGenre;
 		this.historyBorrowCount = historyBorrowCount;
 		this.enrollDate = enrollDate;
-		this.quitDate = quitDate;
 	}
 
 	public String getMemberId() {
@@ -143,27 +137,11 @@ public class Member {
 		this.enrollDate = enrollDate;
 	}
 
-	public String getQuitflag() {
-		return quitflag;
-	}
-
-	public void setQuitflag(String quitflag) {
-		this.quitflag = quitflag;
-	}
-
-	public Date getQuitDate() {
-		return quitDate;
-	}
-
-	public void setQuitDate(Date quitDate) {
-		this.quitDate = quitDate;
-	}
-
 	@Override
 	public String toString() {
 		return memberId + "\t" + memberPw + "\t" + memberName + "\t"
 				+ gender + "\t" + birthDay + "\t" + phone + "\t" + favoriteGenre
 				+ "\t" + presentBorrowCount + "\t" + historyBorrowCount
-				+ "\t" + enrollDate + "\t" + quitflag + "\t" + quitDate;
+				+ "\t" + enrollDate;
 	}
 }
