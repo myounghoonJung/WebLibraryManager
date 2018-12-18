@@ -1,6 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ include file="/WEB-INF/views/common/header.jsp" %>
 <script>
+$(function(){
+	$("#btnEnroll").on("click",function(){
+		location.href='<%=request.getContextPath()%>/member/memberEnroll';
+	});
+});
+
 function loginValidate(){
 	
 	return true;
@@ -15,7 +22,6 @@ function loginValidate(){
 					<input type="text" name="memberId" id="memberId" placeholder="아이디" />
 				</td>
 				<td>
-					
 				</td>
 			</tr>
 			<tr>
@@ -30,10 +36,12 @@ function loginValidate(){
 				<td colspan="2">
 					<input type="checkbox" name="saveId" id="saveId" />
 					<label for="saveId">아이디 저장</label>
-					<input type="button" value="회원가입" />
+					<input type="button" value="회원가입" id="btnEnroll">
 				</td>
 			</tr>
 		</table>
 	</form>
 </div>
 <!-- 로그인 끝 -->
+
+<%@ include file="/WEB-INF/views/common/footer.jsp" %>
