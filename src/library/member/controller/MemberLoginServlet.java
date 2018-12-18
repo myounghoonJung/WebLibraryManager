@@ -40,7 +40,6 @@ public class MemberLoginServlet extends HttpServlet {
 		if(sResult.equals("LOGIN_OK")) {
 			// 아이디 저장 관련 : 쿠키
 			
-			
 			// 온전한 멤버정보를 가져오기 위한 처리
 			m = new MemberService().selectOne(memberId);
 			
@@ -66,6 +65,21 @@ public class MemberLoginServlet extends HttpServlet {
 			response.sendRedirect(request.getContextPath());
 			
 			
+		}
+		else {
+			String msg = "";
+			String loc = "/member/loginPage";
+			
+			if (sResult.equals("WRONG_PASSWORD")) {
+				msg = "비밀번호를 잘못 입력하였습니다.";
+			}
+			else if (sResult.equals("NO_DATA_FOUND")) {
+				msg = "아이디를 잘못 입력하였습니다.";
+			}
+			
+			request.setAttribute("msg", msg);
+			request.setAttribute("loc", loc);
+			request.getRequestDispatcher("/WEB-INF/views/common/msg.jsp").forward(request, response);
 		}
 	}
 

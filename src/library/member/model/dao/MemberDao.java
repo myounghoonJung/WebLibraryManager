@@ -131,4 +131,32 @@ public class MemberDao {
 		return result;
 	}
 
+	public void logger(Connection conn, String memberId, String status, String ip) {
+		PreparedStatement pstmt = null;
+		String query = prop.getProperty("logger");
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, memberId);
+			pstmt.setString(2, status);
+			pstmt.setString(3, ip);
+			
+			int result = pstmt.executeUpdate();
+			
+			if (result > 0) {
+				commit(conn);
+			}
+			else {
+				rollback(conn);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		
+	}
+
 }

@@ -1,8 +1,17 @@
 package library.member.model.vo;
 
+import java.io.Serializable;
 import java.sql.Date;
 
-public class Member {
+import javax.servlet.http.HttpSessionBindingEvent;
+import javax.servlet.http.HttpSessionBindingListener;
+
+import library.member.model.service.MemberService;
+
+public class Member implements Serializable, HttpSessionBindingListener {
+
+	private static final long serialVersionUID = 1L;
+	
 	private String memberId;
 	private String memberPw;
 	private String memberName;
@@ -143,5 +152,19 @@ public class Member {
 				+ gender + "\t" + birthday + "\t" + phone + "\t" + favoriteGenre
 				+ "\t" + presentBorrowCount + "\t" + historyBorrowCount
 				+ "\t" + enrollDate;
+	}
+
+	@Override
+	public void valueBound(HttpSessionBindingEvent e) {
+		// 로그인 로그 기록
+		// 현재 로그인한 회원의 ip가져오기
+		String ip = (String)e.getSession().getAttribute("ip");
+		new MemberService().logger(memberId,"LOG_IN",ip);
+	}
+
+	@Override
+	public void valueUnbound(HttpSessionBindingEvent e) {
+		// 로그아웃 로그 기록
+		new MemberService().logger(memberId,"LOG_OUT","-");
 	}
 }

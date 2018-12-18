@@ -46,4 +46,13 @@ public class MemberService {
 		return result;
 	}
 
+	public void logger(String memberId, String status, String ip) {
+		Connection conn = getConnection();
+		
+		new MemberDao().logger(conn, memberId, status, ip);
+		
+		close(conn);
+		
+	}
+
 }
