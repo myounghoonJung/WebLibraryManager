@@ -1,5 +1,36 @@
 @charset "UTF-8";
 
+/* 전체 컨테이너 */
 div#container{
+	/* background: tomato; */
+}
+
+/***** header *****/
+header{
+	height: 130px;
 	background: tomato;
+}
+
+/***** section *****/
+section#mainsection {
+	background: gold;
+}
+/* 메뉴 관련 */
+
+nav#mainmenu li{
+	list-style-type: none;
+	width: 10em;
+	height: 2em;
+	float: left;
+	text-align: center;
+	cursor: pointer;
+}
+
+
+/***** footer *****/
+footer{
+	background: tomato;
+	clear: both;
+	height: 70px;
+	text-align: center;
 }

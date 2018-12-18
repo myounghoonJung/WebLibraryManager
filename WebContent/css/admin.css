@@ -1,0 +1,18 @@
+@charset "UTF-8";
+
+div#search-memberId {
+	display: inline-block;
+}
+div#search-memberName, div#search-gender {
+	display: none;
+}
+
+section#memberList-container table#tbl-member{
+	width: 100%;
+	border: 1px solid gray;
+	border-collapse: collapse;
+}
+table#tbl-member th, table#tbl-member td{
+	border: 1px solid gray;
+	padding: 10px;
+}
